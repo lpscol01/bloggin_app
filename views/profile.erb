@@ -1,0 +1,24 @@
+<!doctype HTML>
+<head>
+	<style>
+		.button {margin: 30px;
+			border: 5px solid gray;
+			background-color: navy; border-radius: 10px; text-align: center;
+			padding: 15px;
+			color: white;
+			display: inline-block;
+		}	
+	</style>
+</head>
+<body>
+	<h3>Hello..</h3>
+	<%= current_user.email %>
+		<div class="button">
+			Edit Profile
+		</div>
+		<div class="button">
+			<a href="/posts.erb">"New Post"</a>
+		</div>
+	
+</body>
+

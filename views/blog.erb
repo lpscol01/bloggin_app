@@ -1,0 +1,21 @@
+<h1>
+	Post for
+	<%= current_user.email %>
+</h1>
+
+<a href="/new-post">Create a new post!</a>
+
+<ul>
+	<% current_user.posts.order("created_at DESC").each do |post| %>
+	<li style="margin: 10px; padding: 10px; border:1px solid green;">
+		<b>
+			<%= post.title %>
+		</b>
+		<p>
+			<%= post.body %>
+		</p>
+		<small>
+			<%= post.created_at.strftime("%m/%d/%Y") %>
+		</small>
+	</li>
+<% end %>
