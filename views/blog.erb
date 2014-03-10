@@ -7,7 +7,7 @@
 
 <ul>
 	<% current_user.posts.order("created_at DESC").each do |post| %>
-	<li style="margin: 10px; padding: 10px; border:1px solid green;">
+	<li style="margin: 10px; padding: 10px; border:2px solid green; border-radius: 5px">
 		<b>
 			<%= post.title %>
 		</b>

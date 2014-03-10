@@ -82,9 +82,9 @@ post "/create_post" do
 		@post = Post.create(params[:post])
 
 		if @post
-			redirect to("/blog")
+			redirect to ("/blog")
 		else
-			redirect to("/new-post")
+			redirect to ("/new-post")
 		end
 	else
 		redirect to ("/new-post")
@@ -99,4 +99,13 @@ get "/blog" do
 	erb :blog
 end
 
+get "/log-out" do
+		
+	#store the user id in the session
+	session[:user_id] = nil
+	
+	#notify the user that they are signed in
+	flash[:notice] = "You are logged out."
 
+	redirect to "/"
+end
