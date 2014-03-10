@@ -1,5 +1,11 @@
 <h3> New Post </h3>
 <hr>
+<style>
+  body{
+  	   background-image: url("/images/bfrank2.jpeg");
+  	   background-size: cover;
+  }
+</style>
 <form method="POST" action="/create_post" >
 	<input type="hidden" name="[post]user_id" value="<%=current_user.id%>" >
 
