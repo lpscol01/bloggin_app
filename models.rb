@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
 	has_many :posts
 	has_one  :profile
+	has_one  :signup
 
 end
 
@@ -13,6 +14,11 @@ class Post < ActiveRecord::Base
 end
 
 class Profile <ActiveRecord::Base
+
+	belongs_to :user
+end
+
+class Signup <ActiveRecord::Base
 
 	belongs_to :user
 end

@@ -25,7 +25,6 @@ def current_user
 	end
 end
 
-
 #Routes
 
 get "/" do 
@@ -36,7 +35,7 @@ post "/sign-in" do
 	@user = User.where(email: params[:username] ).first
 
 	if @user && ( @user.password == params[:password] )
-		puts "Welcome to THE blog"
+		puts "Welcome to Dana's Travel Blog"
 		
 		#store the user id in the session
 		session[:user_id] = @user.id
@@ -44,7 +43,7 @@ post "/sign-in" do
 		#notify the user that they are signed in
 		flash[:notice] = "You are signed in!"
 
-		redirect to "/profile"
+		redirect to "/posts"
 	else
 		flash[:error] = "Unable to sign you in."
 
@@ -52,6 +51,26 @@ post "/sign-in" do
 	end
 end
 
+get "/signup" do 
+	erb :signup
+end
+
+post "/signup" do
+	puts params
+	if params[:signup][:username] && params[:signup][:password]
+
+		@newuser = User.create(params[:signup])
+
+		if @newuser
+			redirect to("/")
+		else
+			redirect to("/signup")
+		end
+	else
+		redirect to ("/signup")
+	end
+end
+	
 get "/posts" do
 	erb :posts
 end
