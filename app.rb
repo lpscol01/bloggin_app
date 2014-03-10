@@ -21,7 +21,7 @@ Dir['./*.rb', ',/models/*.rb'].each{ |f| require f }
 
 def current_user
 	if session[:user_id]
-		@current_user - User.find( session[:user_id] )
+		@current_user = User.find( session[:user_id] )
 	end
 end
 
@@ -57,7 +57,7 @@ end
 
 post "/signup" do
 	puts params
-	if params[:signup][:username] && params[:signup][:password]
+	if params[:signup][:email] && params[:signup][:password]
 
 		@newuser = User.create(params[:signup])
 
@@ -89,6 +89,10 @@ post "/create_post" do
 	else
 		redirect to ("/new-post")
 	end
+end
+
+get "/new-post" do
+	erb :posts
 end
 
 get "/blog" do
